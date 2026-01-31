@@ -3,7 +3,7 @@
 To fully leverage the Enterprise Express Agent, you need to establish an **Enterprise Account**, define **Workspaces**, and configure **Agents**. This guide focuses on the foundational step: setting up your Enterprise Account and creating your first Workspace.
 
 ## 1. Create an Enterprise Account
-The first step is to register your organization.
+The first step is to register your organization to create an account.
 
 1. Navigate to the **Registration Page**.
 2. Enter your **Enterprise Name** (e.g., "Acme Corp").

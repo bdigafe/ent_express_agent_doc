@@ -3,6 +3,7 @@ import { withMermaid } from 'vitepress-plugin-mermaid'
 
 // https://vitepress.dev/reference/site-config
 export default withMermaid(defineConfig({
+  base: '/enterprise-express-agent/',
   title: "Enterprise Express Agent",
   description: "Documentation for Enterprise Express Agent Architecture and Integration",
   themeConfig: {
