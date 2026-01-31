@@ -1,0 +1,40 @@
+.VPHero {
+  padding-top: 80px !important; /* Restore breathable space at the top */
+  padding-bottom: 0px !important; /* Remove bottom padding to bring buttons closer to features */
+}
+
+/* Reduce top spacing of the content section following the Hero */
+.vp-doc[class*="_index"] { 
+  /* This targets the home page content wrapper in some themes, 
+     but VPHome might be the better target or just generic content adjusment */
+}
+
+.VPHome .vp-doc {
+    padding-top: 24px !important;
+}
+
+.VPHero .container {
+  max-width: 100% !important;
+}
+
+.VPHero .main {
+  max-width: 1200px !important; /* Widen the text container further */
+  margin: 0 auto;
+}
+
+.VPHero .text {
+  max-width: 100% !important; /* Allow description to span full width of the container */
+  text-wrap: pretty;
+}
+
+.VPHero .name {
+  max-width: 100% !important;
+}
+
+/* Remove horizontal lines (border-top) from h2 headers in the content */
+/* And reduce the top margin to bring sections closer */
+.vp-doc h2 {
+  border-top: none !important;
+  margin-top: 32px !important; /* Reduced from default (~64px) */
+  margin-bottom: 16px !important;
+}
