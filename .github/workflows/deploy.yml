@@ -50,7 +50,10 @@ jobs:
         run: npm ci
 
       - name: Build with VitePress
-        run: npm run docs:build
+        # Set the VITEPRESS_BASE environment variable to the repository name for correct asset linking
+        run: |
+          export VITEPRESS_BASE="/${{ github.event.repository.name }}/"
+          npm run docs:build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

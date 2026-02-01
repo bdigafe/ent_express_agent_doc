@@ -12,6 +12,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/node": "^25.1.0",
     "debug": "^4.4.3",
     "mermaid": "^11.12.2",
     "vitepress": "^1.6.4",
