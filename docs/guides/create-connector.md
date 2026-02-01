@@ -20,4 +20,4 @@ Connectors allow your agents to talk to external APIs.
 
 ## Connector Mockup
 
-> ![Create Connector Form](./assets/images/eea_create_connector.png)
+> ![Create Connector Form](../assets/images/eea_create_connector.png)

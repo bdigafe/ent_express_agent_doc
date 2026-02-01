@@ -16,5 +16,5 @@ Agents are the core of the EEA platform. Here is how to create a basic agent.
 
 ## Agent Mockup
 
-> ![Create Agent Form](./assets/images/eea_create_agent.png)
+> ![Create Agent Form](../assets/images/eea_create_agent.png)
 > *Mockup: Form with fields for Name, Description, Model Selection, System Instructions text area, and Authentication Dropdown set to None.*

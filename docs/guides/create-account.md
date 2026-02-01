@@ -23,5 +23,5 @@ Workspaces allow you to organize agents by context (e.g., Sales, Support).
 4. Define the **Context** (e.g., "Salesforce Integration").
 5. Click **Save**.
 
-> ![Create Workspace Form](./assets/images/eea_create_workspace.png)
+> ![Create Workspace Form](../assets/images/eea_create_workspace.png)
 
