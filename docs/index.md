@@ -7,7 +7,7 @@ hero:
   actions:
     - theme: brand
       text: Getting Started
-      link: /getting-started
+      link: /guides/create-account
     - theme: alt
       text: Explore Architecture
       link: /architecture

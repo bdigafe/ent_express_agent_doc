@@ -11,7 +11,8 @@ export default withMermaid(defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Architecture', link: '/architecture' }
+      { text: 'Architecture', link: '/architecture' },
+      { text: 'Security', link: '/security-overview' }
     ],
 
     sidebar: [
@@ -23,11 +24,20 @@ export default withMermaid(defineConfig({
         ]
       },
       {
+        text: 'Security',
+        items: [
+            { text: 'Overview', link: '/security/security-overview' },
+            { text: 'Admin Portal', link: '/security/admin-security' },
+            { text: 'Connectors', link: '/security/connector-security' },
+            { text: 'End-User Auth', link: '/security/end-user-security' }
+        ]
+      },
+      {
         text: 'Guides',
         items: [
-          { text: 'Create Account', link: '/getting-started' },
-          { text: 'Create Agent', link: '/create-agent' },
-          { text: 'Create Connector', link: '/create-connector' }
+          { text: 'Create Account', link: '/guides/create-account' },
+          { text: 'Create Agent', link: '/guides/create-agent' },
+          { text: 'Create Connector', link: '/guides/create-connector' }
         ]
       }
     ],
