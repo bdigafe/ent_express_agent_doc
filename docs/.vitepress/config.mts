@@ -18,7 +18,6 @@ export default withMermaid(defineConfig({
       {
         text: 'Overview',
         items: [
-          { text: 'Introduction', link: '/' },
           { text: 'Architecture', link: '/architecture' },
           { text: 'Admin Portal', link: '/admin-portal' },
         ]
