@@ -11,7 +11,7 @@ The first step is to register your organization to create an account.
 4. Select your **Subscription Plan**.
 5. Click **Create Account**.
 
-> ![Create Account Form](./assets/images/eea_create_account.png)
+> ![Create Account Form](../assets/images/eea_create_account.png)
  
 
 ## 2. Create a Workspace
