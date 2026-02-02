@@ -2,6 +2,8 @@
 
 To ensure reliability, transparency, and continuous improvement of the Enterprise Express Agent (EEA), we implement a robust monitoring and observability strategy. This system tracks agent creation, execution lifecycles, and detailed LLM interactions.
 
+![Trace example](../assets/images/observability.png)
+
 ## Architecture
 
 We utilize a two-pronged approach:
@@ -17,8 +19,6 @@ We leverage [Phoenix](https://phoenix.arize.com/) (an open-source observability 
 - **Token Usage**: Tracks input/output tokens to monitor costs.
 - **Performance**: Visualizes latency and identifies bottlenecks in tool execution.
 - **Evaluation**: Allows for dataset-based evaluation of agent performance.
-
-![Trace example](./assets/images/observability.png)
 
 ## Logging
 

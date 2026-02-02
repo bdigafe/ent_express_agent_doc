@@ -2,7 +2,7 @@
 
 The **Admin Portal** is the central command center for your Enterprise Express Agent environment. It provides a unified interface for enterprise administrators to manage all aspects of their organization's AI implementation.
 
-![Admin Portal Dashboard](./assets/images/eea_admin_portal.png)
+![Admin Portal Dashboard](../assets/images/eea_admin_portal.png)
 
 ## Key Capabilities
 

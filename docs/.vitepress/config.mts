@@ -12,7 +12,7 @@ export default withMermaid(defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Architecture', link: '/architecture' },
-      { text: 'Security', link: '/security-overview' }
+      { text: 'Security', link: '/security/' }
     ],
 
     sidebar: [
@@ -20,15 +20,21 @@ export default withMermaid(defineConfig({
         text: 'Overview',
         items: [
           { text: 'Architecture', link: '/architecture' },
-          { text: 'Monitoring', link: '/monitoring' },
-          { text: 'Data Privacy', link: '/data-privacy' },
-          { text: 'Admin Portal', link: '/admin-portal' },
+        ]
+      },
+      {
+        text: 'Platform',
+        items: [
+          { text: 'Admin Portal', link: '/platform/admin-portal' },
+          { text: 'Monitoring', link: '/platform/monitoring' },
+          { text: 'Data Privacy', link: '/platform/data-privacy' },
+          { text: 'Deployment', link: '/platform/deployment' },
         ]
       },
       {
         text: 'Security',
         items: [
-            { text: 'Overview', link: '/security/security-overview' },
+            { text: 'Overview', link: '/security/' },
             { text: 'Admin Portal', link: '/security/admin-security' },
             { text: 'Connectors', link: '/security/connector-security' },
             { text: 'End-User Auth', link: '/security/end-user-security' }
