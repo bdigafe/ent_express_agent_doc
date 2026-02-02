@@ -1,41 +1,52 @@
 # End-User Authentication
 
-To support seamless embedding within SaaS applications (via IFrame) while maintaining high security, EEA uses a **Server-Side Token Handoff** pattern.
+The EEA-UI authenticates end-users via **OAuth2**, using the specific configuration defined for each Agent. To ensure compatibility with modern browser security policies (such as Iframe restrictions and third-party cookie blocking), this OAuth flow is conducted via a **secure popup window**.
 
-## Key Features
-- **No Third-Party Cookies**: Works in all modern browsers with strict privacy settings.
-- **Role-Based Access**: Uses Federated Identity where the SaaS Application creates the user context.
-- **Short-Lived Tokens**: Initial handoff tokens expire in seconds to prevent replay attacks.
+### Agent Configuration
+Each Agent is configured with the following OAuth2 parameters:
+- **Authentication Server** (IdP Authority)
+- **Client ID & Client Secret**
+- **Tenant / Domain**
+- **Redirect URI**: Pointing to the EEA-UI callback endpoint (e.g., `/auth/callback`).
 
-## Token Handoff Flow
+### Implementation Strategy
+The authentication process relies on a dedicated route in the EEA-UI Next.js application:
+
+1.  **Server-Side**: The callback route receives the authorization code, exchanges it securely for access tokens, and validates the resulting JWT.
+2.  **Client-Side**: The page communicates the result back to the main EEA-UI Iframe via `window.opener.postMessage` and immediately closes the popup.
+
+## Authentication Flow
 
 ```mermaid
 sequenceDiagram
     autonumber
-    participant Browser as End-User Browser
-    participant SaaS_BE as SaaS Backend
-    participant EEA_Next as EEA Next.js Server (UI)
-    
-    Note over Browser, SaaS_BE: User is already logged into SaaS App
+    participant UI as EEA-UI (Iframe)
+    participant Popup as Auth Popup
+    participant IdP as Identity Provider
+    participant EEA-Agent 
 
-    Browser->>SaaS_BE: 1. Request Agent Load
-    SaaS_BE->>SaaS_BE: 2. Generate Signed JWT<br/>(User ID, Roles, Org ID)
-    SaaS_BE-->>Browser: 3. Return JWT Token
+    Note over UI, EEA-Agent: User triggers "Sign In" inside the Agent UI
+
+    UI->>Popup: 1. Open Popup Window
+    Popup->>IdP: 2. Redirect to Login Page
     
-    Browser->>EEA_Next: 4. Iframe Load request<br/>GET /agent?token=JWT
+    IdP-->>Popup: 3. User Enters Credentials
     
-    EEA_Next->>EEA_Next: 5. Validate JWT Signature
-    EEA_Next->>EEA_Next: 6. Create HttpOnly Session
+    IdP->>Popup: 4. Redirect to Callback URL<br/>(with Authorization Code)
     
-    EEA_Next-->>Browser: 7. Render Agent UI + Set-Cookie
+    Popup->>Popup: 5. Exchange Code for JWT
     
-    Browser->>EEA_Next: 8. Subsequent API Calls (with Cookie)
-    EEA_Next-->>Browser: 9. Agent Response
+    Popup->>UI: 6. postMessage(Token)
+    Note right of Popup: Secure Handoff to Opener
+    
+    Popup->>Popup: 7. Close Window
+    
+    UI->>UI: 8. Verify & Store Token
+    UI-->>EEA-Agent: 9. Subsequent API Calls (Authenticated)
 ```
 
-## Authorization Strategy
-Permission to access specific agents is managed via **Scopes**:
-1. **SaaS Role**: User has role `Finance_Manager` in SaaS App.
-2. **Token Claim**: JWT includes `roles: ["Finance_Manager"]`.
-3. **Agent Config**: "Finance Agent" requires scope `Finance_Manager`.
-4. **Access Grant**: EEA-UI grants access based on the match.
+## Security Considerations
+1. **Origin Check**: The Popup explicitly validates `window.opener.origin` before handing off the token to ensure it is speaking to the legitimate Agent UI.
+
+2. **Bypassing Cookie Blocking**: By handing off the token directly via `postMessage`, the IFrame can store the token in memory or Session Storage. This bypasses modern browser restrictions on "Third-Party Cookies" that often block IFrames from reading cookies set by popups.
+
